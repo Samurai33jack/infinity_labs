@@ -1,0 +1,34 @@
+jakob shnider cr7
+
+***********************************************************************************
+
+execise 1: (block cnn.com)
+
+- sudo iptables -A OUTPUT -m string --string "cnn.com" --algo kmp -j REJECT
+
+execise 2: (block http)
+
+- sudo iptables -A OUTPUT -p tcp --dport 80 -j REJECT
+
+execise 3: (block pings)
+
+- sudo iptables -A INPUT -p icmp --icmp-type echo-request -j REJECT
+
+execise 4: (one ssh in parallel)
+
+- edit /etc/ssh/sshd_config
+
+- change MaxSessions to 1
+
+execise 5: (one ssh in parallel)
+
+- edit /etc/ssh/sshd_config
+
+- add port 500
+
+- sudo iptables -A INPUT -p tcp -s <permitted_IP> --dport 500 -j ACCEPT
+	sudo iptables -A INPUT -p tcp --dport 500 -j REJECT
+
+- restart ssh -> sudo service ssh restart
+
+***********************************************************************************

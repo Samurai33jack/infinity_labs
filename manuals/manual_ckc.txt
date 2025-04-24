@@ -1,0 +1,78 @@
+manual ckc 
+
+***********************************************************************************
+
+#include <stdio.h>
+
+void func(long a, long b) 
+{
+  long *ptr = &a;
+  *(ptr - 1) += 8;
+  return;
+  // Insert lines here
+  printf("%ld\n", b);
+  printf("%ld\n", a);
+}
+
+int main() {
+  int num = 3;
+  func(3, 1);
+  num = 4;
+  printf("num is now %d\n", num);
+
+  return 0;
+}
+
+***********************************************************************************
+
+#include <stdio.h>
+
+void finish(int a, int b) {
+  if (42 == a) {
+    printf("That's an interesting value for a.\n");
+  }
+  if (0 == b) {
+    printf("How mundane.\n");
+  }
+  if (32767 == a * b) {
+    printf("Keep in mind that neither success not failure is ever final.\n");
+  }
+  if (8001 == a * b || 9001 == a * b) {
+    printf("Realize that while the first 90 percent of code accounts for 90 "
+           "percent of the development time, so does the last 10 percent of "
+           "the code.\n");
+  }
+
+  printf("You've successfully finished this part of the exercise.\n");
+}
+
+void func() {
+	long x = 42;
+  long *ptr = &x;
+  *(ptr + 4) -= 242;
+  return;
+}
+
+int main() {
+  func();
+
+  return 0;
+}
+
+***********************************************************************************
+
+ways to crash:
+
+1) set env variable XDG_CURRENT_DESKTOP with alot of text and create bufferoverflow
+
+2) spam args until arg list too long
+
+3) messing with ld permissions (untested)
+
+***********************************************************************************
+
+after examing the code we see that the script uses the tmp file and run_me open the
+
+path written in the file, by writing to the file the path to the shadow file and 
+
+with the permissions gained from suid, the file can be opened without sudo

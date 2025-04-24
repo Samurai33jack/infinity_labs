@@ -1,0 +1,16 @@
+manual reconnaissance 
+
+***********************************************************************************
+
+1) dnsenum -v <addr> (default /usr/share/dnsenum/dns.txt)
+
+2) dirb (web content finder)
+
+3) nmap -sT -sU <addr>
+
+4) dirb http://<addr>/
+
+7) crunch 10 10 0123456789 023458 -o phone_numbers_prefix -t +9725,@@@@@@@
+   crunch 13 13 0123456789 023458 -o phone_numbers_prefix -t +9725,@@@@@@@
+
+***********************************************************************************

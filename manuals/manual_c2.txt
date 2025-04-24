@@ -1,0 +1,59 @@
+vnc : 
+
+1) sudo apt update
+
+2) sudo apt install xfce4 xfce4-goodies
+
+3) sudo apt install lightdm
+
+4) sudo reboot
+
+5) sudo apt install x11vnc
+
+6) sudo nano /lib/systemd/system/x11vnc.service
+
+then enter:
+
+[Unit] Description=x11vnc service
+After=display-manager.service
+network.target syslog.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/x11vnc -forever -display :0 -auth guess -passwd <change_passwd> 
+ExecStop=/usr/bin/killall x11vnc
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+7) sudo nano /etc/systemd/system/x11vnc.service
+
+then enter:
+
+[Unit]
+Description=VNC Server for X11
+Requires=display-manager.service
+After=syslog.target network-online.target ##optional for better performance
+Wants=syslog.target network-online.target ##optional for better performance
+
+[Service]
+ExecStart=/usr/bin/x11vnc -display :0 -rfbauth /etc/x11vnc.pwd -shared -forever>
+ExecStop=/usr/bin/x11vnc -R stop
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
+
+8) x11vnc -storepasswd 
+
+9) sudo systemctl daemon-reload
+
+10) sudo systemctl enable x11vnc
+
+11) sudo systemctl start x11vnc
+
+12) x11vnc -rfbauth ~/.vnc/passwd
+
+13) use remmina to connect (<ip.addr>:N)

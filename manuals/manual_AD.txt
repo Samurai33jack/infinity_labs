@@ -1,0 +1,30 @@
+windows AD manual:
+
+1) use iso and create a windows server VM
+
+2) install active directory services
+
+3) create 2 users in the users dir
+
+4) create 2 groups and place each user in one
+
+5) create 2 VN windows clients and connet them to the domain
+
+6) set a shared folder and place the BG pic in it 
+
+7) create a new policy and choose the desktop wallpaper template 
+
+8) place the path to the BG pic (shared path)
+
+9) define it to group 1
+
+10) create a simple powershell script to ping the other computer 
+
+11) create new policy and and it to logon scripts 
+
+12) define it to group 2
+
+13) download chrome msi and add it to software installation under new policy
+
+14) create a new policy that does the same with firefox and block other browsers 
+    and create a rule that sets firefox as default

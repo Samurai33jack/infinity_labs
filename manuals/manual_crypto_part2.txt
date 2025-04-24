@@ -1,0 +1,46 @@
+jakob shnider cr7
+
+***********************************************************************************
+
+execise 2:
+
+- install and update apache2
+
+- allow full acess with -> sudo ufw allow "Apache Full"
+
+- enable apache ssl with -> sudo a2enmod ssl
+
+- restart apache2 (sudo systemctl restart apache2)
+
+- create ssl key and cert with the cmd ->
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout 
+/etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt
+
+- configure your sudo nano /etc/apache2/sites-available/your_domain_or_ip.conf
+  and add the following:
+  
+  <VirtualHost *:443>
+   ServerName your_domain_or_ip
+   DocumentRoot /var/www/your_domain_or_ip
+
+   SSLEngine on
+   SSLCertificateFile /etc/ssl/certs/apache-selfsigned.crt
+   SSLCertificateKeyFile /etc/ssl/private/apache-selfsigned.key
+  </VirtualHost>
+  
+  <VirtualHost *:80>
+	ServerName your_domain_or_ip
+	Redirect / https://your_domain_or_ip/
+  </VirtualHost>
+
+- make dir for your doc root -> sudo mkdir /var/www/your_domain_or_ip and a test 
+  index.html 
+
+- enable conf using -> sudo a2ensite your_domain_or_ip.conf
+
+- test using -> sudo apache2ctl configtest
+
+- finally lets restart apache -> sudo systemctl restart apache2
+
+
+***********************************************************************************

@@ -1,0 +1,33 @@
+jakob shnider cr7
+
+***********************************************************************************
+
+execise 2:
+
+- enable ip fowarding
+
+- create a host only network without dhcp
+
+- create a VM with host only network that we configured
+
+- create an ip address with the host as gateway
+
+- add routing to host with ip route add
+
+- check with ping
+
+***********************************************************************************
+
+execise 3:
+
+- install frr
+
+- enable ip fowarding
+
+- edit the frr.conf file and add your configuration
+
+- check nighbor with vtysh
+
+- check with ping
+
+***********************************************************************************
